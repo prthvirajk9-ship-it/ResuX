@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/components/Navbar"
@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <main className="min-h-screen">
+        <main className="min-h-screen resume-print">
           {children}
         </main>
         <Footer />
@@ -28,4 +28,7 @@ export default function RootLayout({
     </html>
   )
 }
+
+
+
 

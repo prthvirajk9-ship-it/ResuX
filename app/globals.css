@@ -2,149 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-/* =======================
-   ROOT THEME VARIABLES
-======================= */
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 271 81% 56%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 271 81% 56%;
-    --radius: 0.5rem;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-}
-
-/* =======================
-   RESUME BASE (SCREEN)
-======================= */
-#resume-preview {
-  width: 794px;          /* A4 width only */
-  max-width: 100%;
-  margin: 0 auto;
-  background: white;
-  padding: 24px;
-  box-sizing: border-box;
-
-  /* 🔥 MOST IMPORTANT FIX */
-  height: auto;
-  min-height: unset;
-}
-
-/* =======================
-   MOBILE RESPONSIVE
-======================= */
-@media (max-width: 768px) {
-  #resume-preview {
-    width: 100%;
-    padding: 16px;
-    box-shadow: none;
-  }
-
-  #resume-preview h1 {
-    font-size: 1.5rem;
-  }
-
-  #resume-preview h2 {
-    font-size: 1.1rem;
-  }
-
-  #resume-preview p,
-  #resume-preview div {
-    font-size: 0.9rem;
-  }
-}
-
-/* =======================
-   PRINT / PDF (A4 ONLY)
-======================= */
+/* === PRINT ONLY (PDF SAFE) === */
 @media print {
-  html, body {
-    width: 210mm;
-    margin: 0;
-    padding: 0;
-    background: white;
-  }
-
-  #resume-preview {
-    width: 210mm;
-    padding: 20mm;
-    margin: 0;
-    box-shadow: none;
-    border: none;
-
-    /* 🔥 browser handle karega page height */
-    height: auto;
-    min-height: unset;
-  }
-
-  button,
-  nav,
-  header {
-    display: none !important;
-  }
+    .resume-print {
+        width: 794px;
+        min-height: 1123px;
+        margin: 0 auto;
+        background: white;
+    }
 }
 
-/* =======================
-   SKILLS STYLING
-======================= */
-.skills-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+/* ===== HEADER PHOTO SAFE FIX ===== */
+.resume-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
-.skill-pill {
-  background: rgba(106, 90, 205, 0.15);
-  color: #111827;
-  padding: 6px 12px;
-  border-radius: 9999px;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
+.resume-header img {
+    width: 96px;
+    height: 96px;
+    min-width: 96px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    flex-shrink: 0;
 }
 
-/* =======================
-   OPTIONAL UI ANIMATION
-======================= */
-@keyframes blob {
-  0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-  100% { transform: translate(0, 0) scale(1); }
+.resume-header .text-block,
+.resume-header .details {
+    max-width: calc(100% - 120px);
+    word-break: break-word;
 }
 
-.animate-blob {
-  animation: blob 7s infinite;
+/* ===== RESUME WIDTH FIX ===== */
+.resume,
+.resume-container,
+#resume {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 16px;
+    box-sizing: border-box;
 }
 
-.animation-delay-2000 {
-  animation-delay: 2s;
+/* ===== MOBILE FIX ===== */
+@media (max-width: 768px) {
+    .resume,
+    .resume-container,
+    #resume {
+        max-width: 100%;
+        padding: 12px;
+        width: 100%;
+    }
 }
